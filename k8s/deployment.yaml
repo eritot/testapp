@@ -21,6 +21,6 @@ spec:
     spec:
       containers:
         - name: testappfrontend
-          image: ernom/testapp:v1.0.1
+          image: ernom/testapp:v1.0.2
           ports:
             - containerPort: 80
