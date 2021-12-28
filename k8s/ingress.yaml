@@ -3,12 +3,14 @@ kind: IngressRoute
 metadata:
     name: frontend-ingress
     namespace: testapp
+    annotations:
+      kubernetes.io/ingress.class: traefik
 spec:
-  entryPoints:
-    - web
-  routes:
-    - match: Host(`testapp.74.220.27.234.nip.io`)
-      kind: Rule
-      services:
-        - name: testappfronted-svc
-          port: 80
+  rules:
+  - http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          serviceName: testappfronted-svc
+          servicePort: 80

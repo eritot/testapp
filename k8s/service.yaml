@@ -5,9 +5,8 @@ metadata:
   namespace: testapp
 spec:
   selector:
-    name: testapp
+    app: testapp
   ports:
     - port: 80
-      targetPort: 80
-      protocol: TCP
+      name: http
 
