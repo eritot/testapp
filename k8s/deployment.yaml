@@ -3,21 +3,17 @@ kind: Deployment
 metadata:
   name: testappfrontend-deployment
   namespace: testapp
-  labels:
-    app: testapp
 spec:
   replicas: 1
   progressDeadlineSeconds: 600
   revisionHistoryLimit: 2
-  strategy:
-      type: Recreate
   selector:
     matchLabels:
-      app: testappfrontend
+      app: testapp
   template:
     metadata:
       labels:
-        app: testappfrontend
+        app: testapp
     spec:
       containers:
         - name: testappfrontend

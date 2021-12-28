@@ -3,11 +3,9 @@ kind: Service
 metadata:
   name: testappfronted-svc
   namespace: testapp
-  labels:
-    app: testapp
 spec:
   selector:
-    app: testapp
+    name: testapp
   ports:
     - port: 80
       targetPort: 80
