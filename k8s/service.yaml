@@ -4,6 +4,7 @@ metadata:
   name: testappfronted-svc
   namespace: testapp
 spec:
+  type: NodePort
   selector:
     app: testapp
   ports:
