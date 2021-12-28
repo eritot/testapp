@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: testappfrontend-deployment
+  labels:
+    app: testapp
+  namespace: testapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: testappfrontend
+  template:
+    metadata:
+      labels:
+        app: testappfrontend
+    spec:
+      containers:
+        - name: testappfrontend
+          imagePullPolicy: IfNotPresent
+          image: ernom/testapp:v1.0.1
