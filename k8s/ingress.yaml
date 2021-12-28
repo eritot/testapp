@@ -6,7 +6,7 @@ spec:
     rules:
     - http:
         paths:
-        - path: /
+        - path: /test
           backend:
             serviceName: testappfronted-svc
             servicePort: 80
