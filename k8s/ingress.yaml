@@ -1,16 +1,14 @@
-apiVersion: networking.k8s.io/v1
-kind: Ingress
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
 metadata:
     name: frontend-ingress
+    namespace: testapp
 spec:
-    rules:
-    - http:
-        paths:
-        - path: /test
-          pathType: Prefix
-          backend:
-            service:
-              name: testappfronted-svc
-              port:
-                number: 80
-
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`testapp.74.220.27.234.nip.io`)
+      kind: Rule
+      services:
+        - name: testappfronted-svc
+          port: 80
