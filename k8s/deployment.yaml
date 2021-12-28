@@ -2,11 +2,15 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: testappfrontend-deployment
+  namespace: testapp
   labels:
     app: testapp
-  namespace: testapp
 spec:
   replicas: 1
+  progressDeadlineSeconds: 600
+  revisionHistoryLimit: 2
+  strategy:
+      type: Recreate
   selector:
     matchLabels:
       app: testappfrontend
@@ -17,5 +21,6 @@ spec:
     spec:
       containers:
         - name: testappfrontend
-          imagePullPolicy: IfNotPresent
           image: ernom/testapp:v1.0.1
+          ports:
+            - containerPort: 80
