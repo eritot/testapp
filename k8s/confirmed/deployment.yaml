@@ -1,0 +1,23 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: testappfrontend-deployment
+  namespace: testapp
+  labels:
+    app: testapp
+    name: testappfrontend-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: testapp
+  template:
+    metadata:
+      labels:
+        app: testapp
+    spec:
+      containers:
+        - name: testappfrontend
+          image: ernom/testapp:v1.0.1
+          ports:
+            - containerPort: 80
